@@ -21,4 +21,5 @@ Edit existing songs.
 Delete songs from the collection.
 View statistics such as total songs, artists, albums, genres, songs per genre, and songs per album.
 
-# Project![alt text](image.png)
+# Project! ![image](https://github.com/milen-ale/songs/assets/96333200/e3534560-eda7-4f9b-b4e5-9a73ae5f2b13)
+

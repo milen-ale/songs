@@ -3,9 +3,7 @@ const Song = require('../models/songs.js'); // Import the Song model
 
 // MongoDB connection
 mongoose.connect('mongodb://localhost:27017/song', {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true 
+  useCreateIndex: true
 });
 
 // Sample data

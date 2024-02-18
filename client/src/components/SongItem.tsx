@@ -13,23 +13,19 @@ const ListItem = styled.div`
   background-color:#808080;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   cursor: pointer;
-  width: 80%;
+  width: 80%; /* Set width to 100% */
+  align-items: center;
+  magin-left:10%;
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-  /* Media query for responsive styles */
-  @media (max-width: 768px) {
-    width: calc(80% - 20px); /* 2 items per row with a gap of 20px */
-  }
-  @media (max-width: 480px) {
-    width: calc(100% - 20px); /* 1 item per row with a gap of 20px */
-  }
 `;
 
 const Input = styled.input`
   margin-bottom: 8px;
+  width: calc(100% - 16px); /* Adjust width to fill container with padding */
 `;
 
 const Button = styled.button`

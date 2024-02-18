@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store/reducers';
+import { RootState } from '../store/reducers/songReducer';
 import { getSongsRequest, deleteSongRequest } from '../store/actions/songActions';
 import SongItem from './SongItem'; // Import the SongItem component
 import styled from '@emotion/styled'; // Import styled from @emotion/styled
@@ -14,12 +14,20 @@ const Container = styled.div`
   align-items: center;
   color: #667;
   width: 100%;
-  margin-top: 10%;
+  margin-left: 10px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust columns for smaller screens */
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust columns for even smaller screens */
+  }
 `;
 
 const SongList: React.FC = () => {
   const dispatch = useDispatch();
-  const { songs, loading, error } = useSelector((state: RootState) => state.songs);
+  const { songs, loading, error } = useSelector((state: RootState) => state);
 
   useEffect(() => {
     dispatch(getSongsRequest());

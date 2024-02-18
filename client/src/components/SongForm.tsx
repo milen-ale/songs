@@ -4,43 +4,37 @@ import { addSongRequest } from '../store/actions/songActions';
 import styled from '@emotion/styled';
 
 const FormContainer = styled.div`
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  margin-top: 20px;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+  max-width: 400px;
 `;
 
 const Input = styled.input`
-text-align: center;
-margin-bottom: 10px;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 5px;
-display:flex
-width: 50%;
-margin: 5px; /* Add margin-right for gap */
-
-  @media (max-width: 768px) {
-    margin-bottom: 8px;
-    padding: 15px;
-    width: 100%;
-    margin-left: 5px; 
-  }
-
-  @media (max-width: 480px) {
-
-    padding: 10px;
-    width: 100%;
-  
-
-  }
+  text-align: center;
+  padding: 13px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
 `;
 
 const Button = styled.button`
-  margin-top: 10px;
   border: 1px solid #ccc;
+  padding: 13px;
   border-radius: 5px;
   background-color: #808080;
+  width: 100%;
+  max-width: 200px;
 `;
 
 const SongForm: React.FC = () => {
@@ -62,7 +56,7 @@ const SongForm: React.FC = () => {
   return (
     <FormContainer>
       <h2>Add Song</h2>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           type="text"
           placeholder="Enter song title"
@@ -87,9 +81,8 @@ const SongForm: React.FC = () => {
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
         />
-         <Button type="submit">Add</Button>
-      </form>
-     
+        <Button type="submit">Add</Button>
+      </Form>
     </FormContainer>
   );
 };

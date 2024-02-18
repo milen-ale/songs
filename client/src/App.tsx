@@ -12,9 +12,11 @@ const App: React.FC = () => {
       <GlobalStyles />
       <div>
         <h1>My Music App</h1>
+
         <SongForm />
         <SongList />
         <SongStatistics />
+      
         
       </div>
     </Provider>

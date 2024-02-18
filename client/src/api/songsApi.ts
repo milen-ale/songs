@@ -14,7 +14,7 @@ export const addSong = async (song: any) => {
     console.log('Response from addSong:', response); // Log the response data
      // Send a POST request to add a new song
     return response.data; // Return the response data (e.g., the newly added song)
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error adding song:', error); // Log any errors that occur
     throw new Error(error.response?.data?.message || error.message); // Throw an error if request fails
   }

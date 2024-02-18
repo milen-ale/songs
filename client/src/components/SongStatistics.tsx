@@ -1,12 +1,29 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/reducers';
+import { RootState } from '../store/reducers/songReducer';
 import styled from '@emotion/styled';
 
 // Styled components for genre and album tables
+const Container = styled.div`
+  margin-top: 20px;
+
+
+`;
+
+const Title = styled.h2`
+  margin-bottom: 10px;
+`;
+
+const Statistic = styled.p`
+  margin: 5px 0;
+`;
+
 const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
+width: 70%;
+margin-left:15%;
+border-collapse: collapse;
+align-items: center;
+justify-content: center;
 `;
 
 const TableHeader = styled.th`
@@ -22,15 +39,13 @@ const TableRow = styled.tr`
 `;
 
 const TableCell = styled.td`
-  border: 1px solid #ccc;
-  padding: 8px;
+border: 1px solid #ccc;
+padding: 8px;
 `;
 
 const SongStatistics: React.FC = () => {
-  const { songs } = useSelector((state: RootState) => state.songs);
-
-  // Total number of songs
-  const totalSongs = songs.length;
+  const { songs } = useSelector((state: RootState) => state);
+  const totalSongs = songs ? songs.length : 0;
 
   // Total number of artists
   const totalArtists = new Set(songs.map(song => song.artist)).size;
@@ -41,16 +56,6 @@ const SongStatistics: React.FC = () => {
   // Total number of genres
   const totalGenres = new Set(songs.flatMap(song => song.genre)).size;
 
-  // Songs per genre
-  const songsPerGenre: { [genre: string]: number } = {};
-  songs.forEach(song => {
-    if (Array.isArray(song.genre)) {
-      song.genre.forEach(genre => {
-        songsPerGenre[genre] = (songsPerGenre[genre] || 0) + 1;
-      });
-    }
-  });
-
   // Songs per album
   const songsPerAlbum: { [album: string]: number } = {};
   songs.forEach(song => {
@@ -58,14 +63,14 @@ const SongStatistics: React.FC = () => {
   });
 
   return (
-    <div>
-      <h2>Song Statistics</h2>
-      <p>Total Songs: {totalSongs}</p>
-      <p>Total Artists: {totalArtists}</p>
-      <p>Total Albums: {totalAlbums}</p>
-      <p>Total Genres: {totalGenres}</p>
+    <Container>
+      <Title>Song Statistics</Title>
+      <Statistic>Total Songs: {totalSongs}</Statistic>
+      <Statistic>Total Artists: {totalArtists}</Statistic>
+      <Statistic>Total Albums: {totalAlbums}</Statistic>
+      <Statistic>Total Genres: {totalGenres}</Statistic>
    
-      <h3>Songs Per Album:</h3>
+      <Title>Songs Per Album:</Title>
       <Table>
         <thead>
           <tr>
@@ -82,7 +87,7 @@ const SongStatistics: React.FC = () => {
           ))}
         </tbody>
       </Table>
-    </div>
+    </Container>
   );
 };
 
